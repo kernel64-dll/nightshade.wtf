@@ -1119,7 +1119,7 @@ const playlists = {
 };
 // Mobile Warning Check
 (function() {
-  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+  const isMobile = /Android|webOS|iPhone|Mac OS|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
   
   if (isMobile) {
     const warning = document.getElementById('mobileWarning');
