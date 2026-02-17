@@ -918,7 +918,21 @@ html, body {
   </div>
   <div id="loadingBar"></div>
 </div>
-
+<!-- Mobile Warning -->
+<div id="mobileWarning" style="display: none;">
+  <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); z-index: 20000; display: flex; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box;">
+    <div style="background: linear-gradient(135deg, rgba(100, 80, 120, 0.3) 0%, rgba(80, 60, 100, 0.3) 50%, rgba(120, 100, 140, 0.3) 100%); border: 2px solid rgba(120, 100, 140, 0.6); border-radius: 20px; padding: 30px; max-width: 400px; text-align: center; backdrop-filter: blur(10px);">
+      <h2 style="color: #c8b8e0; margin-top: 0; font-size: 1.5rem; text-shadow: 0 0 10px rgba(120, 100, 140, 0.6);">hi there</h2>
+      <p style="color: #b89fd8; line-height: 1.6; margin: 15px 0;">due to the shit amount of animations, this WILL lag on mobile. sowwy :3</p>
+      <p style="color: #9d7fb8; font-size: 0.9rem; margin: 15px 0;">if u have a pc, i recommend using that instead. </p>
+      <button id="continueBtn" style="background: linear-gradient(135deg, rgba(120, 100, 140, 0.4) 0%, rgba(100, 80, 120, 0.4) 100%); border: 1px solid rgba(120, 100, 140, 0.8); border-radius: 10px; color: #c8b8e0; padding: 12px 30px; font-size: 1rem; font-family: 'Quicksand', sans-serif; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-top: 10px;">
+        blow up my phone bih <3
+      </button>
+      <button id="closeBtn" onclick="window.close();" style="background: linear-gradient(135deg, rgba(180, 60, 60, 0.4) 0%, rgba(140, 40, 40, 0.4) 100%); border: 1px solid rgba(180, 80, 80, 0.8); border-radius: 10px; color: #e8b8c8; padding: 12px 30px; font-size: 1rem; font-family: 'Quicksand', sans-serif; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-top: 10px;">
+  nah i'd rather not suffer
+</button>
+  </div>
+</div>
 <!-- Selection Page -->
 <div id="selectionPage" class="page">
   <h1 class="main-title">welcome to nightshade.wtf</h1>
@@ -1099,7 +1113,23 @@ const playlists = {
   }
   ]
 };
-
+// Mobile Warning Check
+(function() {
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+  
+  if (isMobile) {
+    const warning = document.getElementById('mobileWarning');
+    warning.style.display = 'block';
+    
+    document.getElementById('continueBtn').addEventListener('click', function() {
+      warning.style.transition = 'opacity 0.5s ease';
+      warning.style.opacity = '0';
+      setTimeout(() => {
+        warning.style.display = 'none';
+      }, 500);
+    });
+  }
+})();
 // State Management
 let currentPage = 'loading';
 let currentBio = null;
