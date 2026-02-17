@@ -291,6 +291,11 @@ html, body {
     overflow-x: hidden;
 }
 
+/* Add this new rule */
+.bio-page:has(.bio-overlay:not(.hidden)) {
+    overflow: hidden;
+}
+
 .back-btn {
     position: fixed;
     top: 20px;
